@@ -27,6 +27,61 @@ namespace Blog.Data.Concrete.EntityFramework.Mappings
             builder.Property(m => m.Note).HasMaxLength(500);
 
             builder.ToTable("Categories");
+
+            builder.HasData(
+                new Category
+                {
+                    Id = 1,
+                    Name = "C#",
+                    Description = "csharp ile ilgili makaleler",
+                    IsActive = true,
+                    IsDeleted = false,
+                    CreatedByName = "InitialCreate",
+                    CreatedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    Note = "Javascript Kategori ekleme"
+                },
+                new Category
+                {
+                    Id = 2,
+                    Name = "Mssql",
+                    Description = "Mssql ile ilgili makaleler",
+                    IsActive = true,
+                    IsDeleted = false,
+                    CreatedByName = "InitialCreate",
+                    CreatedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    Note = " Javascript Kategori ekleme"
+                },
+                 new Category
+                 {
+                     Id = 3,
+                     Name = "Ef Core",
+                     Description = "Ef Core ile ilgili makaleler",
+                     IsActive = true,
+                     IsDeleted = false,
+                     CreatedByName = "InitialCreate",
+                     CreatedDate = DateTime.Now,
+                     ModifiedByName = "InitialCreate",
+                     ModifiedDate = DateTime.Now,
+                     Note = "Javascript Kategori ekleme"
+                 },
+                 new Category
+                 {
+                     Id = 4,
+                     Name = "Javascript",
+                     Description = "Javascript ile ilgili makaleler",
+                     IsActive = true,
+                     IsDeleted = false,
+                     CreatedByName = "InitialCreate",
+                     CreatedDate = DateTime.Now,
+                     ModifiedByName = "InitialCreate",
+                     ModifiedDate = DateTime.Now,
+                     Note = "Kategori Javascript ekleme"
+                 }
+            );
         }
     }
 }

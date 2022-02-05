@@ -53,7 +53,7 @@ namespace Blog.Data.Concrete.EntityFramework.Mappings
                 ModifiedDate = DateTime.Now,
                 Note = "Admin eklendi",
                 Description = "ilk admin eklendi",
-                Picture ="img/img",
+                Picture = "https://hasanberatcihan.com/wp-content/uploads/2020/09/user-man.png",
                 PasswordHash = Encoding.ASCII.GetBytes("a8f5f167f44f4964e6c998dee827110c")
             });
 
