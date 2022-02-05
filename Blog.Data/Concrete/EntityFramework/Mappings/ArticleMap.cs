@@ -25,6 +25,7 @@ namespace Blog.Data.Concrete.EntityFramework.Mappings
             builder.Property(m => m.ViewsCount).IsRequired();
             builder.Property(m => m.CommentCount).IsRequired();
             builder.Property(m => m.Thumbnail).IsRequired().HasMaxLength(250);
+
             builder.Property(m => m.CreatedByName).IsRequired().HasMaxLength(50);
             builder.Property(m => m.ModifiedByName).IsRequired().HasMaxLength(50);
             builder.Property(m => m.CreatedDate).IsRequired();
@@ -34,6 +35,7 @@ namespace Blog.Data.Concrete.EntityFramework.Mappings
             builder.Property(m => m.Note).HasMaxLength(500);
 
             builder.HasOne<Category>(a => a.Category).WithMany(c => c.Articles).HasForeignKey(m => m.CategoryId);
+            builder.HasOne<User>(a => a.User).WithMany(u => u.Articles).HasForeignKey(m => m.UserId);
             builder.ToTable("Articles");
         }
     }
