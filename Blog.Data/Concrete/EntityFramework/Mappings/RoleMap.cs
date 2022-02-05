@@ -27,6 +27,20 @@ namespace Blog.Data.Concrete.EntityFramework.Mappings
             builder.Property(m => m.Note).HasMaxLength(500);
 
             builder.ToTable("Roles");
+
+            builder.HasData(new Role
+            {
+                Id = 1,
+                Name ="Admin",
+                Description = "tam yetkili rol",
+                IsActive = true,
+                IsDeleted = false,
+                CreatedByName = "InitialCreate",
+                CreatedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                Note = "Admin Rol"
+            });
         }
     }
 }

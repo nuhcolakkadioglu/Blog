@@ -37,6 +37,8 @@ namespace Blog.Data.Concrete.EntityFramework.Mappings
             builder.HasOne<Category>(a => a.Category).WithMany(c => c.Articles).HasForeignKey(m => m.CategoryId);
             builder.HasOne<User>(a => a.User).WithMany(u => u.Articles).HasForeignKey(m => m.UserId);
             builder.ToTable("Articles");
+
+           
         }
     }
 }

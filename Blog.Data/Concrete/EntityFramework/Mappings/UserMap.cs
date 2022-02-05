@@ -37,6 +37,26 @@ namespace Blog.Data.Concrete.EntityFramework.Mappings
 
             builder.ToTable("Users");
 
+            builder.HasData(new User
+            {
+                Id=1,
+                RoleId=1,
+                FirstName = "nuh",
+                LastName ="çolakkadıoğlu",
+                UserName="nck",
+                Email = "nck@gmail.com",
+                IsActive = true,
+                IsDeleted =false,
+                CreatedByName = "InitialCreate",
+                CreatedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                Note = "Admin eklendi",
+                Description = "ilk admin eklendi",
+                Picture ="img/img",
+                PasswordHash = Encoding.ASCII.GetBytes("a8f5f167f44f4964e6c998dee827110c")
+            });
+
         }
     }
 }
