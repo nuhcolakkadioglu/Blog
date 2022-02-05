@@ -1,4 +1,4 @@
-﻿using Blog.Entities.Dtos.Article;
+﻿using Blog.Entities.Dtos.ArticleDtos;
 using Blog.Shared.Utilities.Results.Abstract;
 using System;
 using System.Collections.Generic;

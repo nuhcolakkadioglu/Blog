@@ -13,7 +13,7 @@ namespace Blog.Entities.Dtos.ArticleDtos
         [Required]
         public int Id { get; set; }
 
-        [DisplayName("Silindi mi?")]
+        [DisplayName("Silinsin mi?")]
         [Required(ErrorMessage = "{0} Alanı boş geçilemez")]
         public bool IsDeleted { get; set; }
     }
