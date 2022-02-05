@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Blog.Entities.Concrete;
 using Blog.Entities.Dtos;
+using Blog.Entities.Dtos.CategoryDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace Blog.Services.AutoMapper.Profiles
         {
             CreateMap<CategoryAddDto, Category>().ForMember(dest=>dest.CreatedDate,opt=>opt.MapFrom(x=>DateTime.Now));
             CreateMap<CategoryUpdateDto, Category>().ForMember(dest=>dest.ModifiedDate,opt=>opt.MapFrom(x=>DateTime.Now));
+            CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Category, CategoryListDto>().ReverseMap();
         }
     }
 }
