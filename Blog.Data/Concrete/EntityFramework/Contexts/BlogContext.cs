@@ -28,7 +28,6 @@ namespace Blog.Data.Concrete.EntityFramework.Contexts
             modelBuilder.ApplyConfiguration(new CommentMap());
             modelBuilder.ApplyConfiguration(new RoleMap());
             modelBuilder.ApplyConfiguration(new UserMap());
-
         }
     }
 }
