@@ -80,7 +80,7 @@ namespace Blog.Services.Concrete
             {
                 await _unitOfWork.Categories.DeleteAsync(category);
                 await _unitOfWork.SaveAsync();
-                return new Result(ResultStatus.Success, $"{category.Name} adlı kategori silindi");
+                return new Result(ResultStatus.Success, $"{category.Name} adlı kategori kalıcı olarak silindi");
 
             }
             return new Result(ResultStatus.Error, "kayıt bulunamadı");
