@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Data.Concrete.Repositories
+namespace Blog.Data.Concrete.EntityFramework.Repositories
 {
     public class EfArticleRepository : EfEntityRepositoryBase<Article>, IArticleRepository
     {
