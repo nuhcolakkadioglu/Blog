@@ -52,12 +52,17 @@ namespace Blog.Services.Concrete
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
                 {
                     Categories = data,
-                    ResultStatus = ResultStatus.Success
+                    ResultStatus = ResultStatus.Success,
+                    Message = "kayıt bulunamadı"
                 });
 
             }
 
-            return new DataResult<CategoryListDto>(ResultStatus.Error, "kayıt bulunamadı", null);
+            return new DataResult<CategoryListDto>(ResultStatus.Error, "kayıt bulunamadı", new CategoryListDto { 
+                Categories=null,
+                ResultStatus = ResultStatus.Error,
+                Message = "kayıt bulunamadı"
+            });
 
         }
 
@@ -77,6 +82,23 @@ namespace Blog.Services.Concrete
 
             return new DataResult<CategoryListDto>(ResultStatus.Error, "kayıt bulunamadı", null);
         }
+
+        public async Task<IDataResult<CategoryListDto>> GetAllByNonDeleteAndActive()
+        {
+            var data = await _unitOfWork.Categories.GetAllAsync(m => !m.IsDeleted && m.IsActive, m => m.Articles);
+            if (data.Count > -1)
+            {
+                return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
+                {
+                    Categories = data,
+                    ResultStatus = ResultStatus.Success
+                });
+
+            }
+
+            return new DataResult<CategoryListDto>(ResultStatus.Error, "kayıt bulunamadı", null);
+        }
+
 
         public async Task<IResult> HardDelete(int categoryId)
         {
@@ -132,20 +154,5 @@ namespace Blog.Services.Concrete
 
         }
 
-        public async Task<IDataResult<CategoryListDto>> GetAllByNonDeleteAndActive()
-        {
-            var data = await _unitOfWork.Categories.GetAllAsync(m => !m.IsDeleted && m.IsActive, m => m.Articles);
-            if (data.Count > -1)
-            {
-                return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
-                {
-                    Categories = data,
-                    ResultStatus = ResultStatus.Success
-                });
-
-            }
-
-            return new DataResult<CategoryListDto>(ResultStatus.Error, "kayıt bulunamadı", null);
-        }
     }
 }

@@ -22,10 +22,8 @@ namespace Blog.Mvc.Areas.Admin.Controllers
         {
             var result = await _categoryService.GetAll();
 
-            if (result.ResultStatus == ResultStatus.Success)
-                return View(result.Data);
+            return View(result.Data);
 
-            return View();
         }
     }
 }
