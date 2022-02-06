@@ -1,0 +1,75 @@
+﻿@model CategoryListDto
+@{
+    ViewBag.Title = "Kategori Index";
+}
+
+@if (Model.ResultStatus == ResultStatus.Success)
+{
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+           Kategoriler
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="categoriesTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Adı</th>
+                            <th>Açıklama</th>
+                            <th>Aktif Mi?</th>
+                            <th>Silinmiş Mi?</th>
+                            <th>Not</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Oluşturan Kişi</th>
+                            <th>Son Düzenlenme Tarihi</th>
+                            <th>Son Düzenleyen Kullanıcı</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>#ID</th>
+                            <th>Adı</th>
+                            <th>Açıklama</th>
+                            <th>Aktif Mi?</th>
+                            <th>Silinmiş Mi?</th>
+                            <th>Not</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Oluşturan Kişi</th>
+                            <th>Son Düzenlenme Tarihi</th>
+                            <th>Son Düzenleyen Kullanıcı</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model.Categories)
+                        {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td>@(item.IsActive == true ? "Aktif":"Pasif" ) </td>
+                            <td>@(item.IsDeleted==true?"Evet":"Hayır")</td>
+                            <td>@item.Note</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.CreatedByName</td>
+                            <td>@item.ModifiedByName</td>
+                            <td>@item.ModifiedDate</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            $('#categoriesTable').DataTable();
+        });
+
+    </script>
+}
