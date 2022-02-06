@@ -40,7 +40,11 @@ namespace Blog.Services.Concrete
 
             }
 
-            return new DataResult<CategoryDto>(ResultStatus.Error, "Böyle bir kategori bulunamadı", null);
+            return new DataResult<CategoryDto>(ResultStatus.Error, "Böyle bir kategori bulunamadı", new CategoryDto { 
+                Category =null,
+                Message = "Böyle bir kategori bulunamadı",
+                ResultStatus=ResultStatus.Error
+            });
 
         }
 
