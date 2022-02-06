@@ -58,8 +58,9 @@ namespace Blog.Services.Concrete
 
             }
 
-            return new DataResult<CategoryListDto>(ResultStatus.Error, "kayıt bulunamadı", new CategoryListDto { 
-                Categories=null,
+            return new DataResult<CategoryListDto>(ResultStatus.Error, "kayıt bulunamadı", new CategoryListDto
+            {
+                Categories = null,
                 ResultStatus = ResultStatus.Error,
                 Message = "kayıt bulunamadı"
             });
@@ -129,28 +130,38 @@ namespace Blog.Services.Concrete
             return new Result(ResultStatus.Error, "kayıt bulunamadı");
         }
 
-        public async Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName)
+        public async Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
             var category = _mapper.Map<Category>(categoryAddDto);
             category.CreatedByName = createdByName;
             category.ModifiedByName = createdByName;
 
-            await _unitOfWork.Categories.AddAsync(category);
+            var addDto = await _unitOfWork.Categories.AddAsync(category);
 
             await _unitOfWork.SaveAsync();
 
-            return new Result(ResultStatus.Success, $"{categoryAddDto.Name} Başarı ile eklenmiştir.");
+            return new DataResult<CategoryDto>(ResultStatus.Success, $"{categoryAddDto.Name} Başarı ile eklenmiştir.", new CategoryDto
+            {
+                Category = addDto,
+                Message = $"{categoryAddDto.Name} Başarı ile eklenmiştir.",
+                ResultStatus = ResultStatus.Success
+            });
         }
 
 
-        public async Task<IResult> Update(CategoryUpdateDto categoryAddDto, string modifiedByName)
+        public async Task<IDataResult<CategoryDto>> Update(CategoryUpdateDto categoryAddDto, string modifiedByName)
         {
             var category = _mapper.Map<Category>(categoryAddDto);
             category.ModifiedByName = modifiedByName;
 
-            await _unitOfWork.Categories.UpdateAsync(category);
+            var updateDto = await _unitOfWork.Categories.UpdateAsync(category);
             await _unitOfWork.SaveAsync();
-            return new Result(ResultStatus.Success, $"{categoryAddDto.Name} adlı kategori güncellenmiştir");
+            return new DataResult<CategoryDto>(ResultStatus.Success, $"{categoryAddDto.Name} adlı kategori güncellenmiştir", new CategoryDto
+            {
+                Category = updateDto,
+                Message = $"{categoryAddDto.Name} adlı kategori güncellenmiştir",
+                ResultStatus = ResultStatus.Success
+            });
 
         }
 

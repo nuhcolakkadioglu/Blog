@@ -1,3 +1,4 @@
+using Blog.Services.AutoMapper.Profiles;
 using Blog.Services.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,7 +18,7 @@ namespace Blog.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile));
             services.LoadMyServices();
         }
 
